@@ -43,7 +43,7 @@ namespace GestaoCulto.Repository.Class
 
         public virtual async Task<IEnumerable<TEntity>> BuscarExpressao(Expression<Func<TEntity, bool>> predicado)
         {
-            return await _mySqlContext.Set<TEntity>().Where(predicado).ToArrayAsync();
+            return await _mySqlContext.Set<TEntity>().Where(predicado).AsNoTracking().ToArrayAsync();
         }
 
         public virtual async Task<IEnumerable<TEntity>> ObterPorDescricao(string Descricao)

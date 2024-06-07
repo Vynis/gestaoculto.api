@@ -22,44 +22,23 @@ namespace GestaoCulto.Services.Class
             return await _repository.Adicionar(obj);
         }
 
-        public async Task<bool> AdiconarLista(TEntity[] obj)
-        {
-            return await _repository.AdiconarLista(obj);
-        }
-
         public async Task<bool> Atualizar(TEntity obj)
         {
             return await _repository.Atualizar(obj);
         }
 
-        public async Task<bool> AtualizarLista(List<TEntity> obj)
+
+        public async Task<bool> Excluir(int id)
         {
-            return await _repository.AtualizarLista(obj);
+            var result = await _repository.ObterPorId(id);
+
+            return await _repository.Excluir(result);
         }
 
-        public async Task<IEnumerable<TEntity>> BuscarExpressao(Expression<Func<TEntity, bool>> predicado)
-        {
-            return await _repository.BuscarExpressao(predicado);
-        }
 
-        public async Task<bool> Excluir(TEntity obj)
+        public async Task<TEntity> ObterPorId(int id)
         {
-            return await _repository.Excluir(obj);
-        }
-
-        public async Task<bool> ExcluirLista(TEntity[] obj)
-        {
-            return await _repository.ExcluirLista(obj);
-        }
-
-        public async Task<IEnumerable<TEntity>> ObterPorDescricao(string Descricao)
-        {
-            return await _repository.ObterPorDescricao(Descricao);
-        }
-
-        public async Task<TEntity> ObterPorId(int Id)
-        {
-            return await _repository.ObterPorId(Id);
+            return await _repository.ObterPorId(id);
         }
 
         public async Task<IEnumerable<TEntity>> ObterTodos()

@@ -3,14 +3,16 @@ using System;
 using GestaoCulto.Repository.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GestaoCulto.Repository.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20240607145431_Add_20240607_01")]
+    partial class Add_20240607_01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,34 +34,6 @@ namespace GestaoCulto.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("congregacao");
-                });
-
-            modelBuilder.Entity("GestaoCulto.Domain.Models.FuncoesMinisteriaisModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("IntrucoesFuncao")
-                        .HasColumnType("text");
-
-                    b.Property<int>("MinisterioId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("char(1)");
-
-                    b.Property<string>("Titulo")
-                        .HasColumnType("varchar(60)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MinisterioId");
-
-                    b.ToTable("funcoes_ministeriais");
                 });
 
             modelBuilder.Entity("GestaoCulto.Domain.Models.MinisterioModel", b =>
@@ -88,40 +62,6 @@ namespace GestaoCulto.Repository.Migrations
                     b.HasIndex("CongregacaoId");
 
                     b.ToTable("ministerios");
-                });
-
-            modelBuilder.Entity("GestaoCulto.Domain.Models.MusicaModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Autor")
-                        .HasColumnType("varchar(60)");
-
-                    b.Property<int>("CongregacaoId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<TimeSpan>("Duracao")
-                        .HasColumnType("time");
-
-                    b.Property<string>("Letra")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("char(1)");
-
-                    b.Property<string>("Titulo")
-                        .HasColumnType("varchar(60)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CongregacaoId");
-
-                    b.ToTable("musicas");
                 });
 
             modelBuilder.Entity("GestaoCulto.Domain.Models.ParametrosSistemaModel", b =>
@@ -238,28 +178,10 @@ namespace GestaoCulto.Repository.Migrations
                     b.ToTable("usuarios");
                 });
 
-            modelBuilder.Entity("GestaoCulto.Domain.Models.FuncoesMinisteriaisModel", b =>
-                {
-                    b.HasOne("GestaoCulto.Domain.Models.MinisterioModel", "Ministerio")
-                        .WithMany("FuncoesMinisteriais")
-                        .HasForeignKey("MinisterioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("GestaoCulto.Domain.Models.MinisterioModel", b =>
                 {
                     b.HasOne("GestaoCulto.Domain.Models.CongregacaoModel", "Congregacao")
                         .WithMany("Ministerios")
-                        .HasForeignKey("CongregacaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("GestaoCulto.Domain.Models.MusicaModel", b =>
-                {
-                    b.HasOne("GestaoCulto.Domain.Models.CongregacaoModel", "Congregacao")
-                        .WithMany("Musicas")
                         .HasForeignKey("CongregacaoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

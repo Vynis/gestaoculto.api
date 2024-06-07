@@ -1,5 +1,6 @@
 using GestaoCulto.IOC;
 using GestaoCulto.Repository.Persistence.Context;
+using GestaoCulto.Services.AutoMapper;
 using GestaoCulto.Shared.Token;
 using GestaoCulto.WebApi.Configurations.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,6 +37,7 @@ namespace GestaoCulto.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(AutoMapperSetup));
             services.AddSwaggerConfig();
             services.AddDIConfiguration();
 
