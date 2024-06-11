@@ -41,7 +41,7 @@ namespace GestaoCulto.WebApi
             services.AddSwaggerConfig();
             services.AddDIConfiguration();
 
-            var key = Encoding.ASCII.GetBytes(SettingsToken.Secret);
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
             var con = Configuration["MYSQL_CON:MSQL_CONNECTIONSTRING"];
 

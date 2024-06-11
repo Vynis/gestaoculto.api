@@ -12,6 +12,7 @@ namespace GestaoCulto.Services.AutoMapper
         public AutoMapperSetup()
         {
             CreateMap<CongregacaoViewModel, CongregacaoModel>().ReverseMap();
+            CreateMap<UsuarioAuthViewModel, UsuariosModel>().ReverseMap();
         }
     }
 }

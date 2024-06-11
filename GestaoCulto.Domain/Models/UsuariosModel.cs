@@ -12,7 +12,7 @@ namespace GestaoCulto.Domain.Models
         public string Nome { get; set; }
         [Column(TypeName = "varchar(60)")]
         public string Email { get; set; }
-        [Column(TypeName = "varchar(20)")]
+        [Column(TypeName = "varchar(40)")]
         public string Senha { get; set; }
         public DateTime DataCriacao { get; set; }
         [Column(TypeName = "char(1)")]
