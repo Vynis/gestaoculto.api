@@ -43,5 +43,22 @@ namespace GestaoCulto.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [SwaggerGroup("Autenticacao")]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var usuario = await _authService.Get(Convert.ToInt32(User.Identity.Name));
+
+                return Ok(new { name = usuario.Nome, picture = "" });
+            }
+            catch (Exception ex)
+            {
+
+                return Response(ex.Message, false);
+            }
+        }
+
     }
 }

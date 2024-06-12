@@ -9,5 +9,6 @@ namespace GestaoCulto.Services.Interfaces
     public interface IAuthService
     {
         Task<UsuarioAuthViewModel> Post(AutenticarViewModel autenticarViewModel);
+        Task<UsuarioAuthViewModel> Get(int idUser);
     }
 }

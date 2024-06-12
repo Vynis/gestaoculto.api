@@ -22,6 +22,16 @@ namespace GestaoCulto.Services.Class
             _mapper = mapper;
         }
 
+        public async Task<UsuarioAuthViewModel> Get(int idUser)
+        {
+            var response = await _usuarioRepository.BuscarExpressao(x => x.Id == idUser);
+
+            if (!response.Any())
+                throw new Exception("Usuario não encontrado");
+
+            return _mapper.Map<UsuarioAuthViewModel>(response.FirstOrDefault());
+        }
+
         public async Task<UsuarioAuthViewModel> Post(AutenticarViewModel autenticarViewModel)
         {
             autenticarViewModel.Senha = SenhaHashService.CalculateMD5Hash(autenticarViewModel.Senha);
