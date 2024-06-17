@@ -14,6 +14,7 @@ namespace GestaoCulto.IOC.Repository
             service.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             service.AddScoped<ICongregacaoRepository, CongregacaoRepository>();
             service.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            service.AddScoped<IPessoasRepository, PessoasRepository>();
 
         }
     }

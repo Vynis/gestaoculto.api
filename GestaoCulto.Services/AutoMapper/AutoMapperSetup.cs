@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using GestaoCulto.Domain.Models;
 using GestaoCulto.Services.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GestaoCulto.Services.AutoMapper
 {
@@ -13,6 +10,7 @@ namespace GestaoCulto.Services.AutoMapper
         {
             CreateMap<CongregacaoViewModel, CongregacaoModel>().ReverseMap();
             CreateMap<UsuarioAuthViewModel, UsuariosModel>().ReverseMap();
+            CreateMap<PessoasViewModel, PessoasModel>().ReverseMap();   
         }
     }
 }

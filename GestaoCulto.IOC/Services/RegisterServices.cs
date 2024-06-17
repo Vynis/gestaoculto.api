@@ -13,7 +13,8 @@ namespace GestaoCulto.IOC.Services
         {
             service.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             service.AddScoped<ICongregacaoService, CongregacaoService>();
-            service.AddScoped<IAuthService, AuthService>(); 
+            service.AddScoped<IAuthService, AuthService>();
+            service.AddScoped<IPessoasService, PessoasService>();
         }
     }
 }
